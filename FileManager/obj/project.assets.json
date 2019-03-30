@@ -776,6 +776,16 @@
         "runtime": {
           "lib/netstandard1.3/System.Xml.XmlDocument.dll": {}
         }
+      },
+      "HelperStructures/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.0",
+        "compile": {
+          "bin/placeholder/HelperStructures.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/HelperStructures.dll": {}
+        }
       }
     }
   },
@@ -3415,12 +3425,18 @@
         "system.xml.xmldocument.4.3.0.nupkg.sha512",
         "system.xml.xmldocument.nuspec"
       ]
+    },
+    "HelperStructures/1.0.0": {
+      "type": "project",
+      "path": "../HelperStructures/HelperStructures.csproj",
+      "msbuildProject": "../HelperStructures/HelperStructures.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETStandard,Version=v2.0": [
       "Google.Apis >= 1.38.0",
       "Google.Cloud.Storage.V1 >= 2.3.0",
+      "HelperStructures >= 1.0.0",
       "NETStandard.Library >= 2.0.3"
     ]
   },
@@ -3431,11 +3447,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\cristian\\Source\\Repos\\Speech-Transcriber\\FileManager\\FileManager.csproj",
+      "projectUniqueName": "C:\\Users\\cristian\\Source\\Repos\\Speech-Transcriber2\\FileManager\\FileManager.csproj",
       "projectName": "FileManager",
-      "projectPath": "C:\\Users\\cristian\\Source\\Repos\\Speech-Transcriber\\FileManager\\FileManager.csproj",
+      "projectPath": "C:\\Users\\cristian\\Source\\Repos\\Speech-Transcriber2\\FileManager\\FileManager.csproj",
       "packagesPath": "C:\\Users\\cristian\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\cristian\\Source\\Repos\\Speech-Transcriber\\FileManager\\obj\\",
+      "outputPath": "C:\\Users\\cristian\\Source\\Repos\\Speech-Transcriber2\\FileManager\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -3453,7 +3469,11 @@
       },
       "frameworks": {
         "netstandard2.0": {
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\cristian\\Source\\Repos\\Speech-Transcriber2\\HelperStructures\\HelperStructures.csproj": {
+              "projectPath": "C:\\Users\\cristian\\Source\\Repos\\Speech-Transcriber2\\HelperStructures\\HelperStructures.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
