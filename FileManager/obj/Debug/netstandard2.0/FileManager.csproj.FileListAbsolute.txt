@@ -1,0 +1,6 @@
+C:\Users\cristian\Source\Repos\Speech-Transcriber\FileManager\bin\Debug\netstandard2.0\FileManager.deps.json
+C:\Users\cristian\Source\Repos\Speech-Transcriber\FileManager\bin\Debug\netstandard2.0\FileManager.dll
+C:\Users\cristian\Source\Repos\Speech-Transcriber\FileManager\obj\Debug\netstandard2.0\FileManager.csprojAssemblyReference.cache
+C:\Users\cristian\Source\Repos\Speech-Transcriber\FileManager\obj\Debug\netstandard2.0\FileManager.csproj.CoreCompileInputs.cache
+C:\Users\cristian\Source\Repos\Speech-Transcriber\FileManager\obj\Debug\netstandard2.0\FileManager.AssemblyInfoInputs.cache
+C:\Users\cristian\Source\Repos\Speech-Transcriber\FileManager\obj\Debug\netstandard2.0\FileManager.AssemblyInfo.cs
