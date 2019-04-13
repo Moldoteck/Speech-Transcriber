@@ -6,9 +6,9 @@ namespace FileManager
 {
     interface IFileManager
     {
-        void CheckExists(string filePath);
-        void DeleteFile(string filePath);
-        void ListFilesFromPath(string filePath);
-        void StoreFile(string inputData, string outputPath);
+        bool CheckExists(string filePath);
+        int DeleteFile(string filePath);
+        string[] ListFilesFromPath(string filePath);
+        int StoreFile(string inputData, string outputPath);
     }
 }
