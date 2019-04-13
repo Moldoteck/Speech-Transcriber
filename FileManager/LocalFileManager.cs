@@ -1,29 +1,46 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
 
 namespace FileManager
 {
     class LocalFileManager : IFileManager
     {
-        public void CheckExists(string filePath)
+        public bool CheckExists(string filePath)
         {
-            throw new NotImplementedException();
+            return System.IO.File.Exists(filePath);
         }
 
-        public void DeleteFile(string filePath)
+        public int DeleteFile(string filePath)
         {
-            throw new NotImplementedException();
+            try
+            {
+                System.IO.File.Delete(filePath);
+                return 1;
+            }
+            catch (Exception)
+            {
+                return -1;
+            }
         }
 
-        public void ListFilesFromPath(string filePath)
+        public string[] ListFilesFromPath(string filePath)
         {
-            throw new NotImplementedException();
+            return System.IO.Directory.GetFiles(filePath);
         }
 
-        public void StoreFile(string inputData, string outputPath)
+        public int StoreFile(string inputData, string outputPath)
         {
-            throw new NotImplementedException();
+            try
+            {
+                File.WriteAllText(outputPath, inputData);
+                return 1;
+            }
+            catch (Exception)
+            {
+                return -1;
+            }
         }
     }
 }
