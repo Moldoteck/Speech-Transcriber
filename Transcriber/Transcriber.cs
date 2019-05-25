@@ -4,7 +4,7 @@ using System.Text;
 using Google.Cloud.Speech.V1;
 using System.IO;
 
-namespace Transcriber
+namespace Speech_Transcriber
 {
     public class Transcriber : ITranscriber
     {

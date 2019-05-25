@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Transcriber
+namespace Speech_Transcriber
 {
     public interface ITranscriber
     {

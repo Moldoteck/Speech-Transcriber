@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace AFC
+namespace Speech_Transcriber
 {
     interface IAudioFileConverter
     {

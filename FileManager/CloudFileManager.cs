@@ -5,7 +5,7 @@ using Google.Apis.Auth.OAuth2;
 using Google.Cloud.Storage.V1;
 using HelperStructures;
 
-namespace FileManager
+namespace Speech_Transcriber
 {
     public class CloudFileManager : IFileManager
     {

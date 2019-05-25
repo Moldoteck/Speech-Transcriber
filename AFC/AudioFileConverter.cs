@@ -2,7 +2,7 @@
 using System.IO;
 using NAudio.Wave;
 
-namespace AFC
+namespace Speech_Transcriber
 {
     public class AudioFileConverter : IAudioFileConverter
     {

@@ -35,9 +35,10 @@
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.chooseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.uploadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.recognizeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.syncCloudToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -45,7 +46,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.listBox1 = new System.Windows.Forms.ListBox();
-            this.syncCloudToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -105,40 +105,47 @@
             // chooseToolStripMenuItem
             // 
             this.chooseToolStripMenuItem.Name = "chooseToolStripMenuItem";
-            this.chooseToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.chooseToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
             this.chooseToolStripMenuItem.Text = "Choose";
             this.chooseToolStripMenuItem.Click += new System.EventHandler(this.chooseToolStripMenuItem_Click);
             // 
             // uploadToolStripMenuItem
             // 
             this.uploadToolStripMenuItem.Name = "uploadToolStripMenuItem";
-            this.uploadToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
+            this.uploadToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
             this.uploadToolStripMenuItem.Text = "Upload";
             this.uploadToolStripMenuItem.Click += new System.EventHandler(this.uploadToolStripMenuItem_Click);
-            // 
-            // saveToolStripMenuItem
-            // 
-            this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
-            this.saveToolStripMenuItem.Text = "Save to";
             // 
             // recognizeToolStripMenuItem
             // 
             this.recognizeToolStripMenuItem.Name = "recognizeToolStripMenuItem";
-            this.recognizeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.recognizeToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
             this.recognizeToolStripMenuItem.Text = "Recognize";
             this.recognizeToolStripMenuItem.Click += new System.EventHandler(this.recognizeToolStripMenuItem_Click);
+            // 
+            // syncCloudToolStripMenuItem
+            // 
+            this.syncCloudToolStripMenuItem.Name = "syncCloudToolStripMenuItem";
+            this.syncCloudToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
+            this.syncCloudToolStripMenuItem.Text = "Sync Cloud";
+            this.syncCloudToolStripMenuItem.Click += new System.EventHandler(this.syncCloudToolStripMenuItem_Click);
             // 
             // deleteToolStripMenuItem
             // 
             this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
-            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
+            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
             this.deleteToolStripMenuItem.Text = "Delete";
+            // 
+            // saveToolStripMenuItem
+            // 
+            this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
+            this.saveToolStripMenuItem.Text = "Save to";
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             // 
             // helpToolStripMenuItem
@@ -146,6 +153,7 @@
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
             this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
             this.helpToolStripMenuItem.Text = "Help";
+            this.helpToolStripMenuItem.Click += new System.EventHandler(this.helpToolStripMenuItem_Click);
             // 
             // aboutToolStripMenuItem
             // 
@@ -186,13 +194,6 @@
             this.listBox1.Size = new System.Drawing.Size(165, 355);
             this.listBox1.TabIndex = 8;
             this.listBox1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.listBox1_MouseClick);
-            // 
-            // syncCloudToolStripMenuItem
-            // 
-            this.syncCloudToolStripMenuItem.Name = "syncCloudToolStripMenuItem";
-            this.syncCloudToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.syncCloudToolStripMenuItem.Text = "Sync Cloud";
-            this.syncCloudToolStripMenuItem.Click += new System.EventHandler(this.syncCloudToolStripMenuItem_Click);
             // 
             // SpeechTranscriber
             // 

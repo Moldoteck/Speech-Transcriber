@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 
-namespace FileManager
+namespace Speech_Transcriber
 {
     public class LocalFileManager : IFileManager
     {
