@@ -38,6 +38,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Google.Apis.Core, Version=1.35.1.0, Culture=neutral, PublicKeyToken=4b01fa6e34db77ab, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.Apis.Core.1.35.1\lib\net45\Google.Apis.Core.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.VisualStudio.TestPlatform.TestFramework, Version=14.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\MSTest.TestFramework.1.1.18\lib\net45\Microsoft.VisualStudio.TestPlatform.TestFramework.dll</HintPath>
     </Reference>
@@ -49,7 +52,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AudioFileConverterTester.cs" />
+    <Compile Include="LocalFileManagerTester.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TranscriberTester.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -58,6 +63,22 @@
     <ProjectReference Include="..\AFC\AFC.csproj">
       <Project>{77370203-E299-4A5B-80E0-5615D79BEDB3}</Project>
       <Name>AFC</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FileManager\FileManager.csproj">
+      <Project>{8E191500-DC08-4136-B04D-11423321B211}</Project>
+      <Name>FileManager</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HelperStructures\HelperStructures.csproj">
+      <Project>{8a04a796-ac0e-40eb-b14a-8595515efd47}</Project>
+      <Name>HelperStructures</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Speech-Transcriber\Speech-Transcriber.csproj">
+      <Project>{92d1a6d5-f487-4b08-9412-36ad9f5fd123}</Project>
+      <Name>Speech-Transcriber</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Transcriber\Transcriber.csproj">
+      <Project>{dd827a1b-093f-468c-9458-0bc6883b6551}</Project>
+      <Name>Transcriber</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
