@@ -1,13 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Google.Apis.Auth.OAuth2;
-using Google.Apis.Services;
 using Google.Cloud.Storage.V1;
-//using HelperStructures;
+using HelperStructures;
 
 namespace FileManager
 {
@@ -17,99 +13,165 @@ namespace FileManager
         StorageClient _storageClient;
         public CloudFileManager(string jsonPath)
         {
-            var credential = GoogleCredential.FromFile(jsonPath);
-            _storageClient = StorageClient.Create(credential);
-        }
-        public bool CheckExists(string filePath)
-        {
-            var listPath = filePath.Split('/');
-            var fileName = listPath[listPath.Length - 1];
-            var found = filePath.IndexOf("/" + fileName);
-            var filepath = filePath.Substring(0, found);
-
-            var listOfObjects = _storageClient.ListObjects(filepath);
-            foreach (var elem in listOfObjects)
+            try
             {
-                if (elem.Name.Equals(fileName))
-                {
-                    return true;
-                }
+                var credential = GoogleCredential.FromFile(jsonPath);
+                _storageClient = StorageClient.Create(credential);
             }
-            return false;
+            catch (Exception exc)
+            {
+                Console.WriteLine(exc.Message);
+            }
+        }
+        public bool CheckExists(string fullFilePath)
+        {
+            var fileName = Path.GetFileName(fullFilePath);
+            var directoryPath = Path.GetDirectoryName(fullFilePath);
+
+            var listOfObjects = ListFilesFromPath(directoryPath);
+            try
+            {
+                return Array.IndexOf(listOfObjects, fileName) == -1 ? false : true;
+            }
+            catch (ArgumentNullException exc)
+            {
+                Console.WriteLine(exc.Message);
+                return false;
+            }
         }
 
-        public int DeleteFile(string filePath)
+        public ErrorCode DeleteFile(string filePath)
         {
-            var listPath = filePath.Split('/');
-            var fileName = listPath[listPath.Length - 1];
-            var found = filePath.IndexOf("/" + fileName);
-            var filepath = filePath.Substring(0, found);
+            if (_storageClient == null)
+            {
+                return ErrorCode.STATE_INVALID;
+            }
 
-            var listOfObjects = _storageClient.ListObjects(filepath);
+            string fileName, filepath;
+            try
+            {
+                fileName = Path.GetFileName(filePath);
+                filepath = Path.GetDirectoryName(filePath);
+            }
+            catch (Exception exc)
+            {
+                Console.WriteLine(exc.Message);
+                return ErrorCode.EXTERNAL_COMPONENT_ERROR;
+            }
+
             if (CheckExists(filePath))
             {
-                _storageClient.DeleteObject(filepath, fileName);
+                try
+                {
+                    _storageClient.DeleteObject(filepath, fileName);
+                }
+                catch (Exception exc)
+                {
+                    Console.WriteLine(exc.Message);
+                    return ErrorCode.EXTERNAL_COMPONENT_ERROR;
+                }
             }
-            return 0;
+
+            return ErrorCode.SUCCESS;
         }
         public string[] ListFilesFromPath(string path)
         {
-            var listOfObjects = _storageClient.ListObjects(path);
-            List<string> obj = new List<string>();
-            foreach (var elem in listOfObjects)
+            try
             {
-                obj.Add(elem.Name);
+                var listOfObjects = _storageClient.ListObjects(path);
+                List<string> files = new List<string>();
+                foreach (var file in listOfObjects)
+                {
+                    files.Add(file.Name);
+                }
+                return files.ToArray();
             }
-            return obj.ToArray();
+            catch (Exception exc)
+            {
+                Console.WriteLine(exc.Message);
+                return null;
+            }
         }
 
-        public int StoreFile(string inputData, string outputPath)
+        public ErrorCode StoreFile(string inputData, string outputFullPath)
         {
-            if (inputData == null || outputPath == null)
+            if (_storageClient == null)
             {
-                Console.WriteLine($"One of provided arguments: path:{outputPath}, fileName:{inputData} is null");
-                return -1;
-                //return ErrorCode.NULL_ARGUMENT;
+                return ErrorCode.STATE_INVALID;
             }
-            if (inputData == "" || outputPath == "")
+
+            if (inputData == null || outputFullPath == null)
             {
-                Console.WriteLine($"One of provided arguments: path:{outputPath}, fileName:{inputData} is empty string");
-                return -1;
-                //return ErrorCode.INVALID_ARGUMENT;
+                Console.WriteLine($"One of provided arguments: output path:{outputFullPath}" +
+                    $", input path:{inputData} is null");
+                return ErrorCode.NULL_ARGUMENT;
             }
-            if (!CheckBucket(outputPath))
+            if (inputData == "" || outputFullPath == "")
             {
-                Console.WriteLine($"Bucket {inputData} does not exists");
-                return -1;
-                //return ErrorCode.INVALID_ARGUMENT;
+                Console.WriteLine($"One of provided arguments: output path:{outputFullPath}" +
+                    $", input path:{inputData} is empty string");
+                return ErrorCode.INVALID_ARGUMENT;
+            }
+
+            string outputFileName, outputfilepath;
+            try
+            {
+                outputFileName = Path.GetFileName(outputFullPath);
+                outputfilepath = Path.GetDirectoryName(outputFullPath);
+            }
+            catch(Exception exc)
+            {
+                Console.WriteLine(exc.Message);
+                return ErrorCode.EXTERNAL_COMPONENT_ERROR;
+            }
+
+            if (!CheckBucket(outputfilepath))
+            {
+                Console.WriteLine($"Bucket {outputfilepath} does not exists");
+                return ErrorCode.INVALID_ARGUMENT;
             }
             if (!File.Exists(inputData))
             {
-                Console.WriteLine($"Provided source file path:{outputPath} does not exist");
-                return -1;
-                //return ErrorCode.INVALID_ARGUMENT;
+                Console.WriteLine($"Provided source file path:{inputData} does not exist");
+                return ErrorCode.INVALID_ARGUMENT;
             }
-            var fileName = inputData.Split('/')[inputData.Split('/').Length - 1].Split('.')[0];
-            if (CheckExists(outputPath + fileName))
+
+            if (CheckExists(outputFullPath))
             {
-                Console.WriteLine($"File with name {fileName} already exists");
-                DeleteFile(outputPath+ fileName);
-                Console.WriteLine($"Deleted old {fileName} file");
+                Console.WriteLine($"File with name {outputFileName} already exists");
+                DeleteFile(outputFullPath);
+                Console.WriteLine($"Deleted old {outputFileName} file");
             }
-            using (var f = File.OpenRead(inputData))
+
+            try
             {
-                Console.WriteLine($"Started uploading {fileName}.");
-                _storageClient.UploadObject(outputPath, fileName, null, f);
-                Console.WriteLine($"Uploaded {fileName}.");
-                return 0;
-                //return ErrorCode.SUCCESS;
+                using (var f = File.OpenRead(inputData))
+                {
+                    Console.WriteLine($"Started uploading {outputFileName}.");
+                    _storageClient.UploadObject(outputfilepath, outputFileName, null, f);
+                    Console.WriteLine($"Uploaded {outputFileName}.");
+                    return ErrorCode.SUCCESS;
+                }
+            }
+            catch(Exception exc)
+            {
+                Console.WriteLine(exc.Message);
+                return ErrorCode.EXTERNAL_COMPONENT_ERROR;
             }
         }
 
         private bool CheckBucket(string bucketName)
         {
-            var bucketInfo = _storageClient.GetBucket(bucketName);
-            return bucketInfo != null;
+            try
+            {
+                var bucketInfo = _storageClient.GetBucket(bucketName);
+                return bucketInfo != null;
+            }
+            catch (Exception exc)
+            {
+                Console.WriteLine(exc.Message);
+                return false;
+            }
         }
     }
 }

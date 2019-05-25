@@ -7,9 +7,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Speech-Transcriber", "Speec
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FileManager", "FileManager\FileManager.csproj", "{8E191500-DC08-4136-B04D-11423321B211}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AudioFileConverter", "AudioFileConverter\AudioFileConverter.csproj", "{95540D66-65AB-4DB8-84D1-8E0CF817632A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AudioFile", "AudioFile\AudioFile.csproj", "{548DD7F9-B453-482F-A473-4F3961B96F91}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AudioFile", "AudioFile\AudioFile.csproj", "{548DD7F9-B453-482F-A473-4F3961B96F91}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Transcriber", "Transcriber\Transcriber.csproj", "{DD827A1B-093F-468C-9458-0BC6883B6551}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HelperStructures", "HelperStructures\HelperStructures.csproj", "{8A04A796-AC0E-40EB-B14A-8595515EFD47}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AFC", "AFC\AFC.csproj", "{77370203-E299-4A5B-80E0-5615D79BEDB3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -25,14 +29,22 @@ Global
 		{8E191500-DC08-4136-B04D-11423321B211}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8E191500-DC08-4136-B04D-11423321B211}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8E191500-DC08-4136-B04D-11423321B211}.Release|Any CPU.Build.0 = Release|Any CPU
-		{95540D66-65AB-4DB8-84D1-8E0CF817632A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{95540D66-65AB-4DB8-84D1-8E0CF817632A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{95540D66-65AB-4DB8-84D1-8E0CF817632A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{95540D66-65AB-4DB8-84D1-8E0CF817632A}.Release|Any CPU.Build.0 = Release|Any CPU
 		{548DD7F9-B453-482F-A473-4F3961B96F91}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{548DD7F9-B453-482F-A473-4F3961B96F91}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{548DD7F9-B453-482F-A473-4F3961B96F91}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{548DD7F9-B453-482F-A473-4F3961B96F91}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DD827A1B-093F-468C-9458-0BC6883B6551}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DD827A1B-093F-468C-9458-0BC6883B6551}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DD827A1B-093F-468C-9458-0BC6883B6551}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DD827A1B-093F-468C-9458-0BC6883B6551}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8A04A796-AC0E-40EB-B14A-8595515EFD47}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8A04A796-AC0E-40EB-B14A-8595515EFD47}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8A04A796-AC0E-40EB-B14A-8595515EFD47}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8A04A796-AC0E-40EB-B14A-8595515EFD47}.Release|Any CPU.Build.0 = Release|Any CPU
+		{77370203-E299-4A5B-80E0-5615D79BEDB3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{77370203-E299-4A5B-80E0-5615D79BEDB3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{77370203-E299-4A5B-80E0-5615D79BEDB3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{77370203-E299-4A5B-80E0-5615D79BEDB3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
