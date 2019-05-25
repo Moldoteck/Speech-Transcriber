@@ -1,6 +1,4 @@
-﻿using HelperStructures;
-
-namespace Speech_Transcriber
+﻿namespace Speech_Transcriber
 {
     interface IFileManager
     {

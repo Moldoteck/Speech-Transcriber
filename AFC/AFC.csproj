@@ -45,7 +45,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AudioFileConverter.cs" />
-    <Compile Include="Class1.cs" />
     <Compile Include="IAudioFileConverter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
