@@ -25,10 +25,16 @@ namespace Speech_Transcriber
     {
         #region Interface methods
         /// <summary>
-        /// Converts audio from one format to another. Format should be determined by extension
+        /// Converts audio from one format to another. Format should be determined by extension.
         /// </summary>
-        /// <param name="size">Dimensiunea pătratului</param>
+        /// <param name="filePath">Calea către și numele fișierului de intrare</param>
+        /// <param name="outputFilePath">Calea către și numele fișierului de ieșire</param>
         int ConvertToFormat(string filePath, string outputFilePath);
+        /// <summary>
+        /// Converts stereo audio to mono audio file
+        /// </summary>
+        /// <param name="filePath">Calea către și numele fișierului de intrare</param>
+        /// <param name="outputFilePath">Calea către și numele fișierului de ieșire</param>
         int StereoToMono(string filePath, string outputFilePath);
         int Rate(string filePath);
         #endregion
