@@ -1,5 +1,4 @@
-﻿using HelperStructures;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -39,7 +38,8 @@ namespace Speech_Transcriber
             conv.StereoToMono(wavFilePath, wavFilePath);
             richTextBox1.Text += "Audio converted to mono" + System.Environment.NewLine;
 
-            CloudFileManager clfmgr = new CloudFileManager("C:/Users/cristian/Downloads/TextToSpeech-d9a5f0e6b87b.json");
+            //CloudFileManager clfmgr = new CloudFileManager("C:/Users/cristian/Downloads/TextToSpeech-d9a5f0e6b87b.json");
+            CloudFileManager clfmgr = new CloudFileManager("C:/Users/Octavian/Downloads/TextToSpeech-d9a5f0e6b87b.json");
             clfmgr.StoreFile(wavFilePath, currentCloudFile);
 
             richTextBox1.Text += "Audio stored into cloud" + System.Environment.NewLine;

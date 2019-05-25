@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.IO;
 using Google.Apis.Auth.OAuth2;
 using Google.Cloud.Storage.V1;
-using HelperStructures;
 
 namespace Speech_Transcriber
 {

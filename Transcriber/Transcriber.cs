@@ -1,5 +1,4 @@
-﻿using HelperStructures;
-using System;
+﻿using System;
 using System.Text;
 using Google.Cloud.Speech.V1;
 using System.IO;

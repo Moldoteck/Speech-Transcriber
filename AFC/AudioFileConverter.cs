@@ -12,15 +12,22 @@ namespace Speech_Transcriber
             string outputFormat = Path.GetExtension(outputFilePath);
             if (inputFormat != ".mp3" || outputFormat != ".wav")
                 return -1;
-            
-            using (Mp3FileReader mp3 = new Mp3FileReader(filePath))
+
+            try
             {
-                using (WaveStream pcm = WaveFormatConversionStream.CreatePcmStream(mp3))
+                using (Mp3FileReader mp3 = new Mp3FileReader(filePath))
                 {
-                    WaveFileWriter.CreateWaveFile(outputFilePath, pcm);
+                    using (WaveStream pcm = WaveFormatConversionStream.CreatePcmStream(mp3))
+                    {
+                        WaveFileWriter.CreateWaveFile(outputFilePath, pcm);
+                    }
                 }
+                return 1;
             }
-            return 1;
+            catch (Exception)
+            {
+                return -1;
+            }
         }
 
         public int StereoToMono(string filePath, string outputFilePath)
@@ -29,25 +36,40 @@ namespace Speech_Transcriber
             string outputFormat = Path.GetExtension(outputFilePath);
             if (inputFormat != ".wav" || outputFormat != ".wav")
                 return -1;
-            using (var waveFileReader = new WaveFileReader(filePath))
+            if (!File.Exists(filePath))
+                return -1;
+            try
             {
-                if (waveFileReader.WaveFormat.Channels == 2)
+                using (var waveFileReader = new WaveFileReader(filePath))
                 {
+                    if (waveFileReader.WaveFormat.Channels == 1)
+                        return 0;
+                    if (waveFileReader.WaveFormat.Channels > 2)
+                        return -1;
                     var toMono = new StereoToMonoProvider16(waveFileReader);
                     WaveFileWriter.CreateWaveFile(outputFilePath, toMono);
                 }
-                else
-                {
-                    return -1;
-                }
+            }
+            catch (Exception)
+            {
+                return -1;
             }
             return 1;
         }
         public int Rate(string filePath)
         {
-            using (var waveFileReader = new WaveFileReader(filePath))
+            if (!File.Exists(filePath))
+                return -1;
+            try
             {
-                return waveFileReader.WaveFormat.SampleRate;
+                using (var waveFileReader = new WaveFileReader(filePath))
+                {
+                    return waveFileReader.WaveFormat.SampleRate;
+                }
+            }
+            catch (Exception)
+            {
+                return -1;
             }
         }
     }
