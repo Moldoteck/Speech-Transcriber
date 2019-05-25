@@ -8,6 +8,7 @@ namespace Speech_Transcriber
 {
     public class LocalFileManager : IFileManager
     {
+        #region Implemented interface methods
         public bool CheckExists(string filePath)
         {
             return System.IO.File.Exists(filePath);
@@ -53,5 +54,6 @@ namespace Speech_Transcriber
                 return ErrorCode.EXTERNAL_COMPONENT_ERROR;
             }
         }
+        #endregion
     }
 }

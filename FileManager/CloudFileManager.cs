@@ -9,8 +9,11 @@ namespace Speech_Transcriber
 {
     public class CloudFileManager : IFileManager
     {
+        #region Private members
+        StorageClient _storageClient = null;
+        #endregion
 
-        StorageClient _storageClient;
+        #region Constructor
         public CloudFileManager(string jsonPath)
         {
             try
@@ -23,6 +26,9 @@ namespace Speech_Transcriber
                 Console.WriteLine(exc.Message);
             }
         }
+        #endregion
+
+        #region Implemented interface methods
         public bool CheckExists(string fullFilePath)
         {
             var fileName = Path.GetFileName(fullFilePath);
@@ -76,6 +82,12 @@ namespace Speech_Transcriber
         }
         public string[] ListFilesFromPath(string path)
         {
+            if (_storageClient == null)
+            {
+                Console.WriteLine("Client is null");
+                return null;
+            }
+
             try
             {
                 var listOfObjects = _storageClient.ListObjects(path);
@@ -97,6 +109,7 @@ namespace Speech_Transcriber
         {
             if (_storageClient == null)
             {
+                Console.WriteLine("Client is null");
                 return ErrorCode.STATE_INVALID;
             }
 
@@ -159,7 +172,9 @@ namespace Speech_Transcriber
                 return ErrorCode.EXTERNAL_COMPONENT_ERROR;
             }
         }
+        #endregion
 
+        #region Private methods
         private bool CheckBucket(string bucketName)
         {
             try
@@ -173,5 +188,6 @@ namespace Speech_Transcriber
                 return false;
             }
         }
+        #endregion
     }
 }

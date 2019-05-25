@@ -6,6 +6,7 @@ namespace Speech_Transcriber
 {
     public class AudioFileConverter : IAudioFileConverter
     {
+        #region Implemented interface methods
         public int ConvertToFormat(string filePath, string outputFilePath)
         {
             string inputFormat = Path.GetExtension(filePath); // .mp3 sau .wav sau ...
@@ -50,5 +51,6 @@ namespace Speech_Transcriber
                 return waveFileReader.WaveFormat.SampleRate;
             }
         }
+        #endregion
     }
 }

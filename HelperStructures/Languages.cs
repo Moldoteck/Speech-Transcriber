@@ -6,9 +6,14 @@ namespace Speech_Transcriber
 {
     public class Languages
     {
-        private Dictionary<string, string> _language = new Dictionary<string, string>();
+        #region Private members
+        private Dictionary<string, string> _language = null;
+        #endregion
+
+        #region Constructor
         public Languages()
         {
+            _language = new Dictionary<string, string>();
             _language.Add("Afrikaans (South Africa)", "af-ZA");
             _language.Add("Amharic (Ethiopia)", "am-ET");
             _language.Add("Armenian (Armenia)", "hy-AM");
@@ -130,7 +135,9 @@ namespace Speech_Transcriber
             _language.Add("Chinese, Mandarin (Simplified, Hong Kong)", "zh-HK");
             _language.Add("Chinese, Mandarin (Simplified, China)", "zh");
         }
+        #endregion
 
+        #region Public class methods
         public ErrorCode GetLanguageCode(string languageName, out string languageCode)
         {
             if (_language.ContainsKey(languageName))
@@ -148,5 +155,6 @@ namespace Speech_Transcriber
         {
             return new List<string>(_language.Keys);
         }
+        #endregion
     }
 }

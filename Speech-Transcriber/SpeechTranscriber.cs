@@ -27,7 +27,7 @@ namespace Speech_Transcriber
 
         private void uploadToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            currentCloudFile = "interviewstorage1/"+ Path.GetFileNameWithoutExtension(label3.Text) + ".wav";
+            currentCloudFile = "interviewstorage1/" + Path.GetFileNameWithoutExtension(label3.Text) + ".wav";
             LocalFileManager fmgr = new LocalFileManager();
             var localFilePath = label3.Text;// @"C:\Users\cristian\Source\Repos\Speech-Transcriber2\Speech-Transcriber\obj\Debug\recognizer.mp3";
             var wavFilePath = Path.GetDirectoryName(label3.Text) + Path.GetFileNameWithoutExtension(label3.Text) + ".wav";//@"C:\Users\cristian\Source\Repos\Speech-Transcriber2\Speech-Transcriber\obj\Debug\recognizer.wav";
@@ -64,7 +64,7 @@ namespace Speech_Transcriber
         {
 
             Transcriber trs = new Transcriber();
-            
+
             AudioFileConverter conv = new AudioFileConverter();
             var wavFilePath = Path.GetDirectoryName(label3.Text) + Path.GetFileNameWithoutExtension(label3.Text) + ".wav";//@"C:\Users\cristian\Source\Repos\Speech-Transcriber2\Speech-Transcriber\obj\Debug\recognizer.wav";
 
@@ -99,11 +99,19 @@ namespace Speech_Transcriber
 
         private void helpToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Pentru a recunoaște cuvintele dintr-un fișier audio aveți nevoie de conexiune la internet" +
-                "Alegeți un fișier pentru " +
-                "" +
-                "" +
-                "");
+            MessageBox.Show("Pentru a recunoaște cuvintele dintr-un fișier audio aveți nevoie de conexiune la internet" + System.Environment.NewLine +
+                "1) Alegeți un fișier pentru recunoaștere" + System.Environment.NewLine +
+                "2) Apăsați butonul Upload pentru a încărca fișierul pe cloud" + System.Environment.NewLine +
+                "3) Apăsați butonul Recognize pentru a efectua operația de recunoaștere" + System.Environment.NewLine +
+                "* Recunoașterea este realizată blocant, astfel interacțiunea cu aplicația va fi imposibilă atât timp cât nu este primit rezultatul");
+        }
+
+        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Program implementat pentru proiectul la disciplina Ingineria programării" + System.Environment.NewLine +
+                "Autori: " + System.Environment.NewLine +
+                "    Octavian Oprișan" + System.Environment.NewLine +
+                "    Cristian Pădureac");
         }
     }
 }
