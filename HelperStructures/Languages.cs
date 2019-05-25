@@ -1,6 +1,25 @@
-﻿using System;
+﻿/**************************************************************************
+ *                                                                        *
+ *  File:        Languages.cs                                             *
+ *  Copyright:   (c) 2019, Cristian Pădureac                              *
+ *  Description: Languages object is responsible with providing           *
+ *               easy managing of possible languages for performing       *
+ *               audio file recognition.                                  *
+ *               Class provides following functions:                      *
+ *               * Returns language abbreviation by providing             *
+ *                 full language name                                     *
+ *               * Returns list of all supported languages                *
+ *                                                                        *
+ *  This program is free software; you can redistribute it and/or modify  *
+ *  it under the terms of the GNU General Public License as published by  *
+ *  the Free Software Foundation. This program is distributed in the      *
+ *  hope that it will be useful, but WITHOUT ANY WARRANTY; without even   *
+ *  the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR   *
+ *  PURPOSE. See the GNU General Public License for more details.         *
+ *                                                                        *
+ **************************************************************************/
+
 using System.Collections.Generic;
-using System.Text;
 
 namespace Speech_Transcriber
 {

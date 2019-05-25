@@ -1,4 +1,24 @@
-﻿using System;
+﻿/**************************************************************************
+ *                                                                        *
+ *  File:        CloudFileManager.cs                                      *
+ *  Copyright:   (c) 2019, Cristian Pădureac                              *
+ *  Description: Implementation of IFileManager interface                 *
+ *               CloudFileManager object can perform:                     *
+ *               * Check if file exists on cloud storage                  *
+ *               * Delete file from cloud storage                         *
+ *               * List all files from given path                         *
+ *               * Store file at specific path                            *
+ *                                                                        *
+ *  This program is free software; you can redistribute it and/or modify  *
+ *  it under the terms of the GNU General Public License as published by  *
+ *  the Free Software Foundation. This program is distributed in the      *
+ *  hope that it will be useful, but WITHOUT ANY WARRANTY; without even   *
+ *  the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR   *
+ *  PURPOSE. See the GNU General Public License for more details.         *
+ *                                                                        *
+ **************************************************************************/
+
+using System;
 using System.Collections.Generic;
 using System.IO;
 using Google.Apis.Auth.OAuth2;

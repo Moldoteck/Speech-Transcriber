@@ -1,7 +1,23 @@
-﻿using System;
+﻿/**************************************************************************
+ *                                                                        *
+ *  File:        Transcriber.cs                                           *
+ *  Copyright:   (c) 2019, Cristian Pădureac                              *
+ *  Description: Implementation of ITranscriber interface                 *
+ *               It performs transcribing of audio file by using          *
+ *               Google Cloud API                                         *
+ *                                                                        *
+ *  This program is free software; you can redistribute it and/or modify  *
+ *  it under the terms of the GNU General Public License as published by  *
+ *  the Free Software Foundation. This program is distributed in the      *
+ *  hope that it will be useful, but WITHOUT ANY WARRANTY; without even   *
+ *  the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR   *
+ *  PURPOSE. See the GNU General Public License for more details.         *
+ *                                                                        *
+ **************************************************************************/
+
+using System;
 using System.Text;
 using Google.Cloud.Speech.V1;
-using Google.LongRunning;
 using System.IO;
 using Google.Protobuf.Collections;
 

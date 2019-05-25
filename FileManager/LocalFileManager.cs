@@ -1,7 +1,25 @@
-﻿using System;
-using System.Collections.Generic;
+﻿/**************************************************************************
+ *                                                                        *
+ *  File:        LocalFileManager.cs                                      *
+ *  Copyright:   (c) 2019, Octavian Oprișan                               *
+ *  Description: Implementation of IFileManager interface                 *
+ *               LocalFileManager object can perform:                     *
+ *               * Check if file exists on local machine                  *
+ *               * Delete file from local machine                         *
+ *               * List all files from given path                         *
+ *               * Store file at specific path                            *
+ *                                                                        *
+ *  This program is free software; you can redistribute it and/or modify  *
+ *  it under the terms of the GNU General Public License as published by  *
+ *  the Free Software Foundation. This program is distributed in the      *
+ *  hope that it will be useful, but WITHOUT ANY WARRANTY; without even   *
+ *  the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR   *
+ *  PURPOSE. See the GNU General Public License for more details.         *
+ *                                                                        *
+ **************************************************************************/
+
+using System;
 using System.IO;
-using System.Text;
 
 namespace Speech_Transcriber
 {
