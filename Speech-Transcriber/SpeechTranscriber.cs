@@ -36,6 +36,11 @@ namespace Speech_Transcriber
             currentCloudFilePath = "interviewstorage1";
         }
 
+        /// <summary>
+        /// Actions for uploading local audio file to cloud
+        /// </summary>
+        /// <param name="sender">Object that triggers the callback function</param>
+        /// <param name="e">Data related to triggered event</param>
         private void uploadToolStripMenuItem_Click(object sender, EventArgs e)
         {
             currentCloudFile = "interviewstorage1/" + Path.GetFileNameWithoutExtension(label3.Text) + ".wav";
@@ -57,9 +62,13 @@ namespace Speech_Transcriber
             richTextBox1.Text += "Audio stored into cloud" + System.Environment.NewLine;
         }
 
+        /// <summary>
+        /// Actions for selecting audio file from local file system.
+        /// </summary>
+        /// <param name="sender">Object that triggers the callback function</param>
+        /// <param name="e">Data related to triggered event</param>
         private void chooseToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
             OpenFileDialog openFileDialog1 = new OpenFileDialog();
 
             openFileDialog1.InitialDirectory = "./";
@@ -72,6 +81,11 @@ namespace Speech_Transcriber
             }
         }
 
+        /// <summary>
+        /// Actions for recognition of text from audio file.
+        /// </summary>
+        /// <param name="sender">Object that triggers the callback function</param>
+        /// <param name="e">Data related to triggered event</param>
         private void recognizeToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
@@ -86,31 +100,11 @@ namespace Speech_Transcriber
             richTextBox1.Text = textResult;
         }
 
-        private void syncCloudToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            listBox1.Items.Clear();
-            //IFileManager clfmgr = fmf.GetFileManager("C:/Users/cristian/Downloads/TextToSpeech-d9a5f0e6b87b.json");
-            IFileManager clfmgr = fmf.GetFileManager("C:/Users/Octavian/Downloads/TextToSpeech-d9a5f0e6b87b.json");
-            listBox1.Items.AddRange(clfmgr.ListFilesFromPath(currentCloudFilePath));
-
-        }
-
-        private void listBox1_MouseClick(object sender, MouseEventArgs e)
-        {
-            var selectedItem = listBox1.SelectedItem.ToString();
-            currentCloudFile = "interviewstorage1/" + selectedItem;
-        }
-
-        private void SpeechTranscriber_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
+        /// <summary>
+        /// Actions for showing help to user
+        /// </summary>
+        /// <param name="sender">Object that triggers the callback function</param>
+        /// <param name="e">Data related to triggered event</param>
         private void helpToolStripMenuItem_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Pentru a recunoaște cuvintele dintr-un fișier audio aveți nevoie de conexiune la internet" + System.Environment.NewLine +
@@ -120,6 +114,11 @@ namespace Speech_Transcriber
                 "* Recunoașterea este realizată blocant, astfel interacțiunea cu aplicația va fi imposibilă atât timp cât nu este primit rezultatul");
         }
 
+        /// <summary>
+        /// Actions for showing about windows to user
+        /// </summary>
+        /// <param name="sender">Object that triggers the callback function</param>
+        /// <param name="e">Data related to triggered event</param>
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Program implementat pentru proiectul la disciplina Ingineria programării" + System.Environment.NewLine +
