@@ -20,41 +20,35 @@ using System.Text;
 using Google.Cloud.Speech.V1;
 using System.IO;
 using Google.Protobuf.Collections;
+using Grpc.Core;
+using Google.Apis.Auth.OAuth2;
+using Grpc.Auth;
 
 namespace Speech_Transcriber
 {
     public class Transcriber : ITranscriber
     {
         #region Private members
+        Channel _channel;
         Languages _languages = null;
+        SpeechClient _speechClient = null;
         #endregion
 
         #region Constructor
-        public Transcriber()
+        public Transcriber(string jsonPath)
         {
             _languages = new Languages();
+
+            var credential = GoogleCredential.FromFile(jsonPath).CreateScoped(SpeechClient.DefaultScopes);
+            
+            _channel = new Channel(SpeechClient.DefaultEndpoint.ToString(), credential.ToChannelCredentials());
+            _speechClient = SpeechClient.Create(_channel);
         }
         #endregion
 
         #region Public class methods
         public string TranscribeAudioFile(string cloudFilePath, int timeout, bool deleteAfter, string[] hints, string language, int frameRate, int numberOfSpeakers = 1)
         {
-            try
-            {
-                string cloudFileName = Path.GetFileName(cloudFilePath);
-                string cloudPath = Path.GetDirectoryName(cloudFilePath);
-            }
-            catch (ArgumentException exc)
-            {
-                Console.WriteLine(exc.Message);
-                return "";
-            }
-            catch (PathTooLongException exc)
-            {
-                Console.WriteLine(exc.Message);
-                return "";
-            }
-
             string languageCode = "";
             ErrorCode error = _languages.GetLanguageCode(language, out languageCode);
 
@@ -62,8 +56,7 @@ namespace Speech_Transcriber
             {
                 try
                 {
-                    var speechClient = SpeechClient.Create();
-                    var longOperation = speechClient.LongRunningRecognize(new RecognitionConfig()
+                    var longOperation = _speechClient.LongRunningRecognize(new RecognitionConfig()
                     {
                         Encoding = RecognitionConfig.Types.AudioEncoding.Linear16,
                         SampleRateHertz = frameRate,
@@ -73,6 +66,8 @@ namespace Speech_Transcriber
                     }, RecognitionAudio.FromStorageUri("gs://" + cloudFilePath));
                     longOperation = longOperation.PollUntilCompleted();
                     var results = longOperation.Result.Results;
+
+                    _channel.ShutdownAsync().Wait();
 
                     return ParseResults(results);
                 }

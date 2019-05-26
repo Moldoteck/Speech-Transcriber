@@ -48,8 +48,8 @@ namespace Speech_Transcriber
             conv.StereoToMono(wavFilePath, wavFilePath);
             richTextBox1.Text += "Audio converted to mono" + System.Environment.NewLine;
 
-            //CloudFileManager clfmgr = new CloudFileManager("C:/Users/cristian/Downloads/TextToSpeech-d9a5f0e6b87b.json");
-            CloudFileManager clfmgr = new CloudFileManager("C:/Users/Octavian/Downloads/TextToSpeech-d9a5f0e6b87b.json");
+            CloudFileManager clfmgr = new CloudFileManager("C:/Users/cristian/Downloads/TextToSpeech-d9a5f0e6b87b.json");
+            //CloudFileManager clfmgr = new CloudFileManager("C:/Users/Octavian/Downloads/TextToSpeech-d9a5f0e6b87b.json");
             clfmgr.StoreFile(wavFilePath, currentCloudFile);
 
             richTextBox1.Text += "Audio stored into cloud" + System.Environment.NewLine;
@@ -73,7 +73,8 @@ namespace Speech_Transcriber
         private void recognizeToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
-            Transcriber trs = new Transcriber();
+            Transcriber trs = new Transcriber("C:/Users/cristian/Downloads/TextToSpeech-d9a5f0e6b87b.json");
+            //Transcriber trs = new Transcriber("C:/Users/Octavian/Downloads/TextToSpeech-d9a5f0e6b87b.json");
 
             AudioFileConverter conv = new AudioFileConverter();
             var wavFilePath = Path.GetDirectoryName(label3.Text) + Path.GetFileNameWithoutExtension(label3.Text) + ".wav";//@"C:\Users\cristian\Source\Repos\Speech-Transcriber2\Speech-Transcriber\obj\Debug\recognizer.wav";
