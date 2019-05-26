@@ -48,7 +48,7 @@ namespace Speech_Transcriber
         #endregion
 
         #region Implemented interface methods
-        public bool CheckExists(string fullFilePath)
+        public override bool CheckExists(string fullFilePath)
         {
             var fileName = Path.GetFileName(fullFilePath);
             var directoryPath = Path.GetDirectoryName(fullFilePath);
@@ -65,7 +65,7 @@ namespace Speech_Transcriber
             }
         }
 
-        public ErrorCode DeleteFile(string filePath)
+        public override ErrorCode DeleteFile(string filePath)
         {
             if (_storageClient == null)
             {
@@ -99,7 +99,7 @@ namespace Speech_Transcriber
 
             return ErrorCode.SUCCESS;
         }
-        public string[] ListFilesFromPath(string path)
+        public override string[] ListFilesFromPath(string path)
         {
             if (_storageClient == null)
             {
@@ -124,7 +124,7 @@ namespace Speech_Transcriber
             }
         }
 
-        public ErrorCode StoreFile(string inputData, string outputFullPath)
+        public override ErrorCode StoreFile(string inputData, string outputFullPath)
         {
             if (_storageClient == null)
             {

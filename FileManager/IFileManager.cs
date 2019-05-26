@@ -1,6 +1,6 @@
 ﻿/**************************************************************************
  *                                                                        *
- *  File:        IFileManager.cs                                          *
+ *  File:        FileManager.cs                                          *
  *  Copyright:   (c) 2019, Octavian Oprișan                               *
  *  Description: IFileManager interface                                   *
  *               It defines possible operations that                      *
@@ -18,13 +18,13 @@
 
 namespace Speech_Transcriber
 {
-    interface IFileManager
+    public abstract class IFileManager
     {
         #region Interface methods
-        bool CheckExists(string filePath);
-        ErrorCode DeleteFile(string filePath);
-        string[] ListFilesFromPath(string filePath);
-        ErrorCode StoreFile(string inputData, string outputPath);
+        public abstract bool CheckExists(string filePath);
+        public abstract ErrorCode DeleteFile(string filePath);
+        public abstract string[] ListFilesFromPath(string filePath);
+        public abstract ErrorCode StoreFile(string inputData, string outputPath);
         #endregion
     }
 }

@@ -9,13 +9,15 @@ namespace SpeechTranscriberTester
     public class LocalFileManagerTester
     {
         private string testFile = System.IO.Path.GetFullPath(@"../../../Dataset/recognizer.mp3");
-        private LocalFileManager lfm;
-
+        private IFileManagerFactory fmf = new FileManagerFactory();
+        private IFileManager lfm = null;
+        
         [TestInitialize]
         public void Init()
         {
-            lfm = new LocalFileManager();
+            lfm = fmf.GetFileManager();
         }
+
         [TestMethod]
         public void TestExistingFile()
         {
