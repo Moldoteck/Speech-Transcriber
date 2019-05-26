@@ -136,16 +136,16 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\AFC\AFC.csproj">
-      <Project>{77370203-E299-4A5B-80E0-5615D79BEDB3}</Project>
-      <Name>AFC</Name>
+    <ProjectReference Include="..\AudioFileConverter\AudioFileConverter.csproj">
+      <Project>{0896d300-be49-45e2-b9a3-f76b6d249310}</Project>
+      <Name>AudioFileConverter</Name>
     </ProjectReference>
     <ProjectReference Include="..\FileManager\FileManager.csproj">
       <Project>{8e191500-dc08-4136-b04d-11423321b211}</Project>
       <Name>FileManager</Name>
     </ProjectReference>
     <ProjectReference Include="..\HelperStructures\HelperStructures.csproj">
-      <Project>{8a04a796-ac0e-40eb-b14a-8595515efd47}</Project>
+      <Project>{684cc59b-3981-4662-8536-8d9645a7d1c8}</Project>
       <Name>HelperStructures</Name>
     </ProjectReference>
     <ProjectReference Include="..\Speech-Transcriber\Speech-Transcriber.csproj">
@@ -153,7 +153,7 @@
       <Name>Speech-Transcriber</Name>
     </ProjectReference>
     <ProjectReference Include="..\Transcriber\Transcriber.csproj">
-      <Project>{dd827a1b-093f-468c-9458-0bc6883b6551}</Project>
+      <Project>{096dce1d-6838-4eea-8b80-0ceaacb30f88}</Project>
       <Name>Transcriber</Name>
     </ProjectReference>
   </ItemGroup>

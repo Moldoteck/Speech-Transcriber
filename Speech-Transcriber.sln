@@ -7,13 +7,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Speech-Transcriber", "Speec
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FileManager", "FileManager\FileManager.csproj", "{8E191500-DC08-4136-B04D-11423321B211}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Transcriber", "Transcriber\Transcriber.csproj", "{DD827A1B-093F-468C-9458-0BC6883B6551}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HelperStructures", "HelperStructures\HelperStructures.csproj", "{8A04A796-AC0E-40EB-B14A-8595515EFD47}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AFC", "AFC\AFC.csproj", "{77370203-E299-4A5B-80E0-5615D79BEDB3}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpeechTranscriberTester", "SpeechTranscriberTester\SpeechTranscriberTester.csproj", "{3090BD56-A1FE-4321-BE51-79DF7CFC9A79}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Transcriber", "Transcriber\Transcriber.csproj", "{096DCE1D-6838-4EEA-8B80-0CEAACB30F88}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HelperStructures", "HelperStructures\HelperStructures.csproj", "{684CC59B-3981-4662-8536-8D9645A7D1C8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AudioFileConverter", "AudioFileConverter\AudioFileConverter.csproj", "{0896D300-BE49-45E2-B9A3-F76B6D249310}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,22 +29,22 @@ Global
 		{8E191500-DC08-4136-B04D-11423321B211}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8E191500-DC08-4136-B04D-11423321B211}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8E191500-DC08-4136-B04D-11423321B211}.Release|Any CPU.Build.0 = Release|Any CPU
-		{DD827A1B-093F-468C-9458-0BC6883B6551}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{DD827A1B-093F-468C-9458-0BC6883B6551}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{DD827A1B-093F-468C-9458-0BC6883B6551}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{DD827A1B-093F-468C-9458-0BC6883B6551}.Release|Any CPU.Build.0 = Release|Any CPU
-		{8A04A796-AC0E-40EB-B14A-8595515EFD47}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8A04A796-AC0E-40EB-B14A-8595515EFD47}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8A04A796-AC0E-40EB-B14A-8595515EFD47}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8A04A796-AC0E-40EB-B14A-8595515EFD47}.Release|Any CPU.Build.0 = Release|Any CPU
-		{77370203-E299-4A5B-80E0-5615D79BEDB3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{77370203-E299-4A5B-80E0-5615D79BEDB3}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{77370203-E299-4A5B-80E0-5615D79BEDB3}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{77370203-E299-4A5B-80E0-5615D79BEDB3}.Release|Any CPU.Build.0 = Release|Any CPU
 		{3090BD56-A1FE-4321-BE51-79DF7CFC9A79}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{3090BD56-A1FE-4321-BE51-79DF7CFC9A79}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3090BD56-A1FE-4321-BE51-79DF7CFC9A79}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3090BD56-A1FE-4321-BE51-79DF7CFC9A79}.Release|Any CPU.Build.0 = Release|Any CPU
+		{096DCE1D-6838-4EEA-8B80-0CEAACB30F88}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{096DCE1D-6838-4EEA-8B80-0CEAACB30F88}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{096DCE1D-6838-4EEA-8B80-0CEAACB30F88}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{096DCE1D-6838-4EEA-8B80-0CEAACB30F88}.Release|Any CPU.Build.0 = Release|Any CPU
+		{684CC59B-3981-4662-8536-8D9645A7D1C8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{684CC59B-3981-4662-8536-8D9645A7D1C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{684CC59B-3981-4662-8536-8D9645A7D1C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{684CC59B-3981-4662-8536-8D9645A7D1C8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0896D300-BE49-45E2-B9A3-F76B6D249310}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0896D300-BE49-45E2-B9A3-F76B6D249310}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0896D300-BE49-45E2-B9A3-F76B6D249310}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0896D300-BE49-45E2-B9A3-F76B6D249310}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
