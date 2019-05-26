@@ -30,6 +30,10 @@ namespace Speech_Transcriber
         #endregion
 
         #region Constructor
+
+        /// <summary>
+        /// Constructor
+        /// </summary>
         public Languages()
         {
             _language = new Dictionary<string, string>();
@@ -157,6 +161,16 @@ namespace Speech_Transcriber
         #endregion
 
         #region Public class methods
+
+        /// <summary>
+        /// Returns the language abbreviation according to full file name
+        /// </summary>
+        /// <param name="filePath">File name and path to audio file</param>
+        /// <param name="filePath">File name and path to audio file</param>
+        /// <returns>
+        /// ErrorCode.SUCCESS if abbreviation was successfully retrieved 
+        /// ErrorCode.INVALID_ARGUMENT in case of error
+        /// </returns>
         public ErrorCode GetLanguageCode(string languageName, out string languageCode)
         {
             if (_language.ContainsKey(languageName))
@@ -170,6 +184,13 @@ namespace Speech_Transcriber
                 return ErrorCode.INVALID_ARGUMENT;
             }
         }
+
+        /// <summary>
+        /// Returns the list of all available languages
+        /// </summary>
+        /// <returns>
+        /// List of full languages names
+        /// </returns>
         public List<string> GetLanguageList()
         {
             return new List<string>(_language.Keys);

@@ -27,15 +27,24 @@ namespace Speech_Transcriber
         /// <summary>
         /// Converts audio from one format to another. Format should be determined by extension.
         /// </summary>
-        /// <param name="filePath">Calea către și numele fișierului de intrare</param>
-        /// <param name="outputFilePath">Calea către și numele fișierului de ieșire</param>
+        /// <param name="filePath">File name and path to input file</param>
+        /// <param name="outputFilePath">File name and path to output file</param>
+        /// <returns>Returns 1 in case of success or -1 in case of error</returns>
         int ConvertToFormat(string filePath, string outputFilePath);
+
         /// <summary>
         /// Converts stereo audio to mono audio file
         /// </summary>
-        /// <param name="filePath">Calea către și numele fișierului de intrare</param>
-        /// <param name="outputFilePath">Calea către și numele fișierului de ieșire</param>
+        /// <param name="filePath">File name and path to input file</param>
+        /// <param name="outputFilePath">File name and path to output file</param>
+        /// <returns>Returns 1 in case of success or -1 in case of error</returns>
         int StereoToMono(string filePath, string outputFilePath);
+
+        /// <summary>
+        /// Converts stereo audio to mono audio file
+        /// </summary>
+        /// <param name="filePath">File name and path to audio file</param>
+        /// <returns>Returns frame rate of audio file or -1 in case of error</returns>
         int Rate(string filePath);
         #endregion
     }

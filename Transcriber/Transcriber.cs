@@ -35,6 +35,10 @@ namespace Speech_Transcriber
         #endregion
 
         #region Constructor
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="jsonPath">Path to json file that contains information for OAuth module</param>
         public Transcriber(string jsonPath)
         {
             _languages = new Languages();
@@ -47,6 +51,19 @@ namespace Speech_Transcriber
         #endregion
 
         #region Public class methods
+        /// <summary>
+        /// Recognizes the text from audio file
+        /// </summary>
+        /// <param name="cloudFilePath">Path to audio file that should be recognized</param>
+        /// <param name="timeout">Timeout for waiting the response</param>
+        /// <param name="deleteAfter">Bool that indicate if file should be deleted from cloud after recognizing</param>
+        /// <param name="hints">Array of strings that contain special words that are not in language's dictionary</param>
+        /// <param name="language">Language of spoken words in audio file</param>
+        /// <param name="frameRate">Frame rate of audio file</param>
+        /// <param name="numberOfSpeakers">Number of speakers from recorded audio file</param>
+        /// <returns>
+        /// Recognized text from audio file
+        /// </returns>
         public string TranscribeAudioFile(string cloudFilePath, int timeout, bool deleteAfter, string[] hints, string language, int frameRate, int numberOfSpeakers = 1)
         {
             string languageCode = "";
@@ -86,6 +103,13 @@ namespace Speech_Transcriber
         #endregion
 
         #region Private class methods
+        /// <summary>
+        /// Transforms array of results in readable recognized text
+        /// </summary>
+        /// <param name="results">Array of possible recognition results</param>
+        /// <returns>
+        /// Recognized text from results array
+        /// </returns>
         private string ParseResults(RepeatedField<SpeechRecognitionResult> results)
         {
             if (results != null)

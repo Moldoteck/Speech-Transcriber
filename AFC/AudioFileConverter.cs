@@ -26,6 +26,12 @@ namespace Speech_Transcriber
     public class AudioFileConverter : IAudioFileConverter
     {
         #region Implemented interface methods
+        /// <summary>
+        /// Converts audio from one format to another. Format should be determined by extension.
+        /// </summary>
+        /// <param name="filePath">File name and path to input file</param>
+        /// <param name="outputFilePath">File name and path to output file</param>
+        /// <returns>Returns 1 in case of success or -1 in case of error</returns>
         public int ConvertToFormat(string filePath, string outputFilePath)
         {
             string inputFormat = Path.GetExtension(filePath); // .mp3 sau .wav sau ...
@@ -50,6 +56,12 @@ namespace Speech_Transcriber
             }
         }
 
+        /// <summary>
+        /// Converts stereo audio to mono audio file
+        /// </summary>
+        /// <param name="filePath">File name and path to input file</param>
+        /// <param name="outputFilePath">File name and path to output file</param>
+        /// <returns>Returns 1 in case of success or -1 in case of error</returns>
         public int StereoToMono(string filePath, string outputFilePath)
         {
             string inputFormat = Path.GetExtension(filePath); // .mp3 sau .wav sau ...
@@ -77,6 +89,11 @@ namespace Speech_Transcriber
             return 1;
         }
 
+        /// <summary>
+        /// Converts stereo audio to mono audio file
+        /// </summary>
+        /// <param name="filePath">File name and path to audio file</param>
+        /// <returns>Returns frame rate of audio file or -1 in case of error</returns>
         public int Rate(string filePath)
         {
             if (!File.Exists(filePath))
