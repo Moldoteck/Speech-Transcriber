@@ -26,12 +26,12 @@ namespace Speech_Transcriber
     public class LocalFileManager : IFileManager
     {
         #region Implemented interface methods
-        public bool CheckExists(string filePath)
+        public override bool CheckExists(string filePath)
         {
             return System.IO.File.Exists(filePath);
         }
 
-        public ErrorCode DeleteFile(string filePath)
+        public override ErrorCode DeleteFile(string filePath)
         {
             try
             {
@@ -45,7 +45,7 @@ namespace Speech_Transcriber
             }
         }
 
-        public string[] ListFilesFromPath(string filePath)
+        public override string[] ListFilesFromPath(string filePath)
         {
             try
             {
@@ -58,7 +58,7 @@ namespace Speech_Transcriber
             }
         }
 
-        public ErrorCode StoreFile(string inputData, string outputPath)
+        public override ErrorCode StoreFile(string inputData, string outputPath)
         {
             try
             {

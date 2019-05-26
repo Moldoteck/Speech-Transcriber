@@ -14,8 +14,8 @@ namespace SpeechTranscriberTester
         public void Init()
         {
 
-            string jsonPath = "C:/Users/cristian/Downloads/TextToSpeech-d9a5f0e6b87b.json";
-            //string jsonPath = "C:/Users/Octavian/Downloads/TextToSpeech-d9a5f0e6b87b.json";
+            //string jsonPath = "C:/Users/cristian/Downloads/TextToSpeech-d9a5f0e6b87b.json";
+            string jsonPath = "C:/Users/Octavian/Downloads/TextToSpeech-d9a5f0e6b87b.json";
             transcriber = new Transcriber(jsonPath);
         }
         [TestMethod]
@@ -26,6 +26,16 @@ namespace SpeechTranscriberTester
             string wavFilePath = testFile.Replace(".mp3", ".wav");
             string currentCloudFile = "interviewstorage1/recognizer.wav";
             string textResult = transcriber.TranscribeAudioFile(currentCloudFile, 999999, false, new string[0], "Romanian (Romania)", conv.Rate(wavFilePath));
+            string expectedText = "Bună ziua mă cheamă Cristian și am multe bomboane".ToLower();
+            Assert.AreEqual(true, textResult.ToLower().Contains(expectedText));// avoid \r\n or other noise
+        }
+        [TestMethod]
+        public void TestTranscribeAudioFileInvalidLanguage()
+        {
+            AudioFileConverter conv = new AudioFileConverter();
+            string wavFilePath = testFile.Replace(".mp3", ".wav");
+            string currentCloudFile = "interviewstorage1/recognizer.wav";
+            string textResult = transcriber.TranscribeAudioFile(currentCloudFile, 999999, false, new string[0], "invalid language", conv.Rate(wavFilePath));
             Assert.AreEqual("", textResult);
         }
     }
