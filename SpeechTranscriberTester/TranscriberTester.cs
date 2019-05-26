@@ -9,14 +9,12 @@ namespace SpeechTranscriberTester
     {
         private string testFile = System.IO.Path.GetFullPath(@"../../../Dataset/recognizer.mp3");
         private Transcriber transcriber;
+        private string username = System.Security.Principal.WindowsIdentity.GetCurrent().Name.Split('\\')[1];
 
         [TestInitialize]
         public void Init()
         {
-
-            //string jsonPath = "C:/Users/cristian/Downloads/TextToSpeech-d9a5f0e6b87b.json";
-            string jsonPath = "C:/Users/Octavian/Downloads/TextToSpeech-d9a5f0e6b87b.json";
-            transcriber = new Transcriber(jsonPath);
+            transcriber = new Transcriber("C:/Users/" + username + "/Downloads/TextToSpeech-d9a5f0e6b87b.json");
         }
         [TestMethod]
         public void TestTranscribeAudioFile()

@@ -26,6 +26,7 @@ namespace Speech_Transcriber
         private string currentCloudFilePath;
         private string currentCloudFile;
         private IFileManagerFactory fmf = new FileManagerFactory();
+        private string username = System.Security.Principal.WindowsIdentity.GetCurrent().Name.Split('\\')[1];
 
         public SpeechTranscriber()
         {
@@ -50,8 +51,7 @@ namespace Speech_Transcriber
             conv.StereoToMono(wavFilePath, wavFilePath);
             richTextBox1.Text += "Audio converted to mono" + System.Environment.NewLine;
 
-            //IFileManager clfmgr = fmf.GetFileManager("C:/Users/cristian/Downloads/TextToSpeech-d9a5f0e6b87b.json");
-            IFileManager clfmgr = fmf.GetFileManager("C:/Users/Octavian/Downloads/TextToSpeech-d9a5f0e6b87b.json");
+            IFileManager clfmgr = fmf.GetFileManager("C:/Users/" + username + "/Downloads/TextToSpeech-d9a5f0e6b87b.json");
             clfmgr.StoreFile(wavFilePath, currentCloudFile);
 
             richTextBox1.Text += "Audio stored into cloud" + System.Environment.NewLine;
@@ -74,14 +74,10 @@ namespace Speech_Transcriber
 
         private void recognizeToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
-            //Transcriber trs = new Transcriber("C:/Users/cristian/Downloads/TextToSpeech-d9a5f0e6b87b.json");
-            Transcriber trs = new Transcriber("C:/Users/Octavian/Downloads/TextToSpeech-d9a5f0e6b87b.json");
+            Transcriber trs = new Transcriber("C:/Users/" + username + "/Downloads/TextToSpeech-d9a5f0e6b87b.json");
 
             AudioFileConverter conv = new AudioFileConverter();
             var wavFilePath = Path.GetDirectoryName(label3.Text) + Path.GetFileNameWithoutExtension(label3.Text) + ".wav";//@"C:\Users\cristian\Source\Repos\Speech-Transcriber2\Speech-Transcriber\obj\Debug\recognizer.wav";
-
-
             string textResult = trs.TranscribeAudioFile(currentCloudFile, 999999, false, new string[0], comboBox1.SelectedItem.ToString(), conv.Rate(wavFilePath));
             richTextBox1.Text = textResult;
         }
@@ -89,8 +85,7 @@ namespace Speech_Transcriber
         private void syncCloudToolStripMenuItem_Click(object sender, EventArgs e)
         {
             listBox1.Items.Clear();
-            //IFileManager clfmgr = fmf.GetFileManager("C:/Users/cristian/Downloads/TextToSpeech-d9a5f0e6b87b.json");
-            IFileManager clfmgr = fmf.GetFileManager("C:/Users/Octavian/Downloads/TextToSpeech-d9a5f0e6b87b.json");
+            IFileManager clfmgr = fmf.GetFileManager("C:/Users/" + username + "/Downloads/TextToSpeech-d9a5f0e6b87b.json");
             listBox1.Items.AddRange(clfmgr.ListFilesFromPath(currentCloudFilePath));
 
         }
