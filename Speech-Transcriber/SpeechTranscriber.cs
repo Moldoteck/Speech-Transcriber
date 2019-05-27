@@ -23,9 +23,20 @@ namespace Speech_Transcriber
 {
     public partial class SpeechTranscriber : Form
     {
+        /// <summary>
+        /// Private member that stores path to cloud audio file that has to be recognized
+        /// </summary>
         private string currentCloudFile;
-        private IFileManagerFactory fmf = new FileManagerFactory();
-        private string username = System.Security.Principal.WindowsIdentity.GetCurrent().Name.Split('\\')[1];
+
+        /// <summary>
+        /// Private member that provides FileManager instances
+        /// </summary>
+        private IFileManagerFactory fmf = null;
+
+        /// <summary>
+        /// Private member that helps selecting the path to Json for OAuth procedure
+        /// </summary>
+        private string username = null;
 
         public SpeechTranscriber()
         {
@@ -33,6 +44,8 @@ namespace Speech_Transcriber
             Languages languageObject = new Languages();
             comboBox1.Items.AddRange(languageObject.GetLanguageList().ToArray());
             comboBox1.SelectedIndex = 0;
+            fmf = new FileManagerFactory();
+            username = System.Security.Principal.WindowsIdentity.GetCurrent().Name.Split('\\')[1];
         }
 
         /// <summary>
@@ -93,8 +106,12 @@ namespace Speech_Transcriber
             string textResult = trs.TranscribeAudioFile(currentCloudFile, 999999, false, new string[0], comboBox1.SelectedItem.ToString(), conv.Rate(wavFilePath));
             richTextBox1.Text = textResult;
         }
-        
 
+        /// <summary>
+        /// Actions for showing help window to user
+        /// </summary>
+        /// <param name="sender">Object that triggers the callback function</param>
+        /// <param name="e">Data related to triggered event</param>
         private void helpToolStripMenuItem_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Pentru a recunoaște cuvintele dintr-un fișier audio aveți nevoie de conexiune la internet" + System.Environment.NewLine +
