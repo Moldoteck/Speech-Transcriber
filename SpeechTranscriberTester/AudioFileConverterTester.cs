@@ -28,12 +28,18 @@ namespace SpeechTranscriberTester
         private string testFile = System.IO.Path.GetFullPath(@"../../../Dataset/recognizer.mp3");
         private AudioFileConverter afc;
 
+        /// <summary>
+        /// Initializes the AudioFileConverter
+        /// </summary>
         [TestInitialize]
         public void Init()
         {
             afc = new AudioFileConverter();
         }
 
+        /// <summary>
+        /// Tests if the conversion created the wav file
+        /// </summary>
         [TestMethod]
         public void TestFileExistsAfterConversion()
         {
@@ -42,6 +48,9 @@ namespace SpeechTranscriberTester
             Assert.AreEqual(true, File.Exists(outputFile));
         }
 
+        /// <summary>
+        /// Tests if the conversion failed by passing an invalid path
+        /// </summary>
         [TestMethod]
         public void TestInexistentInputFile()
         {
@@ -50,6 +59,9 @@ namespace SpeechTranscriberTester
             Assert.AreEqual(-1, result);
         }
 
+        /// <summary>
+        /// Tests if the conversion failed by passing an invalid input format (mkv)
+        /// </summary>
         [TestMethod]
         public void TestWrongInputFormat()
         {
@@ -59,6 +71,9 @@ namespace SpeechTranscriberTester
             Assert.AreEqual(-1, result);
         }
 
+        /// <summary>
+        /// Tests if the conversion failed by passing an invalid output format (mkv)
+        /// </summary>
         [TestMethod]
         public void TestWrongOutputFormat()
         {
@@ -67,6 +82,9 @@ namespace SpeechTranscriberTester
             Assert.AreEqual(-1, result);
         }
 
+        /// <summary>
+        /// Tests if the conversion succeded, by passing valid arguments
+        /// </summary>
         [TestMethod]
         public void TestSuccessfulConversion()
         {
@@ -75,6 +93,9 @@ namespace SpeechTranscriberTester
             Assert.AreEqual(1, result);
         }
 
+        /// <summary>
+        /// Tests if the rate is equal to the expected rate
+        /// </summary>
         [TestMethod]
         public void TestRate()
         {
@@ -83,6 +104,9 @@ namespace SpeechTranscriberTester
             Assert.AreEqual(48000, rate);
         }
 
+        /// <summary>
+        /// Tests if tha rate is -1 when passing an inexistent file
+        /// </summary>
         [TestMethod]
         public void TestRateInexistentFile()
         {
@@ -91,6 +115,9 @@ namespace SpeechTranscriberTester
             Assert.AreEqual(-1, rate);
         }
 
+        /// <summary>
+        /// Tests if there is only one channel (output 0)
+        /// </summary>
         [TestMethod]
         public void TestStereoToMonoWrongNoChannels()
         {
@@ -100,6 +127,9 @@ namespace SpeechTranscriberTester
             Assert.AreEqual(0, result);
         }
 
+        /// <summary>
+        /// Tests if StereoToMono fails when an invalid path is passed
+        /// </summary>
         [TestMethod]
         public void TestInexistentPathStereoToMono()
         {

@@ -28,11 +28,18 @@ namespace SpeechTranscriberTester
         private Transcriber transcriber;
         private string username = System.Security.Principal.WindowsIdentity.GetCurrent().Name.Split('\\')[1];
 
+        /// <summary>
+        /// Initializes the transcriber
+        /// </summary>
         [TestInitialize]
         public void Init()
         {
             transcriber = new Transcriber("C:/Users/" + username + "/Downloads/TextToSpeech-d9a5f0e6b87b.json");
         }
+
+        /// <summary>
+        /// Test if the transcribed audio file is accurate
+        /// </summary>
         [TestMethod]
         public void TestTranscribeAudioFile()
         {
@@ -44,6 +51,10 @@ namespace SpeechTranscriberTester
             string expectedText = "Bună ziua mă cheamă Cristian și am multe bomboane".ToLower();
             Assert.AreEqual(true, textResult.ToLower().Contains(expectedText));// avoid \r\n or other noise
         }
+
+        /// <summary>
+        /// Test if the transcribing fails when passing an invalid language
+        /// </summary>
         [TestMethod]
         public void TestTranscribeAudioFileInvalidLanguage()
         {
