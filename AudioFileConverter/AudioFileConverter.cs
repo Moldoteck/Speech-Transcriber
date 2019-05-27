@@ -25,6 +25,7 @@ namespace Speech_Transcriber
 {
     public class AudioFileConverter : IAudioFileConverter
     {
+
         #region Implemented interface methods
         /// <summary>
         /// Converts audio from one format to another. Format should be determined by extension.
