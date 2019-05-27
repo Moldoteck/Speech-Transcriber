@@ -33,6 +33,10 @@ namespace Speech_Transcriber
         #endregion
 
         #region Constructor
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="jsonPath">Path to json file that contains information for OAuth module</param>
         public CloudFileManager(string jsonPath)
         {
             try
@@ -48,6 +52,11 @@ namespace Speech_Transcriber
         #endregion
 
         #region Implemented interface methods
+        /// <summary>
+        /// Checks if a file with the provided path exists
+        /// </summary>
+        /// <param name="fullFilePath">Full path to the file to be tested</param>
+        /// <returns>Returns true if the file is found or false otherwise</returns>
         public override bool CheckExists(string fullFilePath)
         {
             var fileName = Path.GetFileName(fullFilePath);
@@ -65,6 +74,13 @@ namespace Speech_Transcriber
             }
         }
 
+        /// <summary>
+        /// Deletes a file with the specified path from the cloud (if exists)
+        /// </summary>
+        /// <param name="filePath">Full path to the file to be deleted</param>
+        /// <returns>Returns ErrorCode.STATE_INVALID if the StorageClient is not initialized,
+        /// ErrorCode.EXTERNAL_COMPONENT_ERROR if an exception is thrown during the process, 
+        /// or ErrorCode.SUCCESS if the file has been deleted</returns>
         public override ErrorCode DeleteFile(string filePath)
         {
             if (_storageClient == null)
@@ -99,6 +115,12 @@ namespace Speech_Transcriber
 
             return ErrorCode.SUCCESS;
         }
+
+        /// <summary>
+        /// Returns a list with the files from the specified path in cloud
+        /// </summary>
+        /// <param name="path">Path of dir in cloud</param>
+        /// <returns>Returns a list of strings containing all the file names in the provided directory</returns>
         public override string[] ListFilesFromPath(string path)
         {
             if (_storageClient == null)
@@ -124,6 +146,15 @@ namespace Speech_Transcriber
             }
         }
 
+        /// <summary>
+        /// Stores a file in the cloud
+        /// </summary>
+        /// <param name="inputData">text to be written into the file</param>
+        /// /// <param name="outputFullPath">the full path for the file to be written in the cloud</param>
+        /// <returns>Returns ErrorCode.STATE_INVALID if the client is null, ErrorCode.NULL_ARGUMENT if at 
+        /// least one of the arguments is null, ErrorCode.INVALID_ARGUMENT is the arguments are empty strings,
+        /// ErrorCode.EXTERNAL_COMPONENT_ERROR if other errors occured, or ErrorCode.SUCCESS if the file 
+        /// has been stored</returns>
         public override ErrorCode StoreFile(string inputData, string outputFullPath)
         {
             if (_storageClient == null)
@@ -194,6 +225,11 @@ namespace Speech_Transcriber
         #endregion
 
         #region Private methods
+        /// <summary>
+        /// Checks if bucket exists in the cloud
+        /// </summary>
+        /// <param name="bucketName">name of the bucket to be tested</param>
+        /// <returns>Returns true if the bucket is found or false otherwise</returns>
         private bool CheckBucket(string bucketName)
         {
             try

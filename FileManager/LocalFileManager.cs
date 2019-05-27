@@ -26,11 +26,22 @@ namespace Speech_Transcriber
     public class LocalFileManager : IFileManager
     {
         #region Implemented interface methods
+        /// <summary>
+        /// Checks if a file with the provided path exists
+        /// </summary>
+        /// <param name="fullFilePath">Full path to the file to be tested</param>
+        /// <returns>Returns true if the file is found or false otherwise</returns>
         public override bool CheckExists(string filePath)
         {
             return System.IO.File.Exists(filePath);
         }
 
+        /// <summary>
+        /// Deletes a file with the specified path
+        /// </summary>
+        /// <param name="filePath">Full path to the file to be deleted</param>
+        /// <returns>Returns ErrorCode.SUCCESS if the file has been deleted, or
+        /// ErrorCode.EXTERNAL_COMPONENT_ERROR if an exception is thrown during the process</returns>
         public override ErrorCode DeleteFile(string filePath)
         {
             try
@@ -45,6 +56,12 @@ namespace Speech_Transcriber
             }
         }
 
+        /// <summary>
+        /// Returns a list with the files from the specified path
+        /// </summary>
+        /// <param name="filePath">full path to a directory</param>
+        /// <returns>Returns a list of strings containing all the file names in the provided
+        /// directory or null if an exception occured during the process</returns>
         public override string[] ListFilesFromPath(string filePath)
         {
             try
@@ -58,6 +75,13 @@ namespace Speech_Transcriber
             }
         }
 
+        /// <summary>
+        /// Stores a file locally
+        /// </summary>
+        /// <param name="inputData">text to be written into the file</param>
+        /// /// <param name="outputPath">the full path for the file to be written</param>
+        /// <returns>Returns ErrorCode.SUCCESS if the file has been stored, or 
+        /// ErrorCode.EXTERNAL_COMPONENT_ERROR if an exception occured during the process.</returns>
         public override ErrorCode StoreFile(string inputData, string outputPath)
         {
             try

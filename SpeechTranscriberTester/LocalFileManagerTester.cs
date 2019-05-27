@@ -11,7 +11,7 @@ namespace SpeechTranscriberTester
         private string testFile = System.IO.Path.GetFullPath(@"../../../Dataset/recognizer.mp3");
         private IFileManagerFactory fmf = new FileManagerFactory();
         private IFileManager lfm = null;
-        
+
         [TestInitialize]
         public void Init()
         {
