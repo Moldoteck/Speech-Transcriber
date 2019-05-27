@@ -23,7 +23,6 @@ namespace Speech_Transcriber
 {
     public partial class SpeechTranscriber : Form
     {
-        private string currentCloudFilePath;
         private string currentCloudFile;
         private IFileManagerFactory fmf = new FileManagerFactory();
         private string username = System.Security.Principal.WindowsIdentity.GetCurrent().Name.Split('\\')[1];
@@ -34,7 +33,6 @@ namespace Speech_Transcriber
             Languages languageObject = new Languages();
             comboBox1.Items.AddRange(languageObject.GetLanguageList().ToArray());
             comboBox1.SelectedIndex = 0;
-            currentCloudFilePath = "interviewstorage1";
         }
 
         /// <summary>
